@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import myName from './myName';
 import './style.css' 
 import Logo from './logo.svg'
-import printMe from './print'
+import printMe from './print.js'
 
 const firstDiv = () => {
   const element = document.createElement('div');
@@ -23,6 +23,12 @@ const secondDiv = () => {
   tehLogo.src = Logo
 
   element.appendChild(tehLogo)
+
+  const btn = document.createElement('btn')
+  btn.innerHTML = 'Click me harder'
+  btn.onclick = printMe
+
+  element.appendChild(btn)
 
   return element
 }

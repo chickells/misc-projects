@@ -1,3 +1,4 @@
 export default printMe = () => {
-  document.createElement('div').textContent(`Soy de print.js bitches`)
+    console.log('print.js says hi');
+//   document.createElement('div').textContent(`Soy de print.js bitches`)
 }
