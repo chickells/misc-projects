@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import myName from './myName';
 import './style.css' 
 import Logo from './logo.svg'
+import printMe from './print'
 
 const firstDiv = () => {
   const element = document.createElement('div');
@@ -26,7 +27,7 @@ const secondDiv = () => {
   return element
 }
 
-  
+
 
 document.body.appendChild(firstDiv());
 document.body.appendChild(secondDiv());
