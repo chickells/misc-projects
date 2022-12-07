@@ -15,6 +15,8 @@ class Agent:
         self.epsilon = 0 # randomness control
         self.gamme = 0 # discount rate
         self.memory = deque(maxlen=MAX_MEMORY) # popleft() if we exceed memory
+        self.model = None # TODO
+        self.trainer = None # TODO
         # TODO: model, trainer
 
 
@@ -65,13 +67,22 @@ class Agent:
         return np.array(state, dtype=int)
 
     def remember(self, state, action, reward, next_state, done):
-        pass
+        self.memory.append((state, action, reward, next_state, done)) # if exceeds MAX_MEMORY, popleft
 
     def train_long_memory(self):
-        pass
+        if len(self.memory) > BATCH_SIZE:
+            mini_sample = random.sample(self.memory, BATCH_SIZE) # list of tuples
+        else: 
+            mini_sample = self.memory
+        
+        states, actions, rewards, next_states, dones = zip(*mini_sample)
+        self.trainer.train_step(states, actions, rewards, next_states, dones)
+        # for state, action, reward, next_state, done in mini_sample:
+        #     self.trainer.train_step(state, action, reward, next_state, done)
+
 
     def train_short_memory(self, state, action, reward, next_state, done):
-        pass
+        self.trainer.train_step(state, action, reward, next_state, done)
 
     def get_action(self, state):
         pass
