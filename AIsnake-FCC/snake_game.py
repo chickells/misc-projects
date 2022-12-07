@@ -108,7 +108,7 @@ class SnakeGameAI:
         if pt.x > self.w - BLOCK_SIZE or pt.x < 0 or pt.y > self.h - BLOCK_SIZE or pt.y < 0:
             return True
         # hits itself
-        if self.head in self.snake[1:]:
+        if pt in self.snake[1:]:
             return True
         
         return False
@@ -127,6 +127,13 @@ class SnakeGameAI:
         pygame.display.flip()
         
     def _move(self, action):
+        # [straight, right, left]
+
+        clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
+        idx = clock_wise.index(self.direction)
+
+        
+
         x = self.head.x
         y = self.head.y
         if direction == Direction.RIGHT:
