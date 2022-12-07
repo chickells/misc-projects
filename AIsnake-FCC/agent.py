@@ -34,7 +34,25 @@ class Agent:
         pass
 
 def train():
-    pass
+    plot_scores = []
+    plot_mean_scores =[]
+    total_score = 0
+    record = 0
+    agent = Agent()
+    game = SnakeGameAI()
+    while True:
+        # get old state
+        state_old = agent.get_state(game)
+
+        # get move
+        final_move = agent.get_action(state_old)
+
+        # perform move and get new state
+        reward, done, score = game.play_step(final_move)
+        state_new = agent.get_state(game)
+
+        # train short memory
+        agent.train_short_memory()
 
 if __name__ == '__main__':
     train()
