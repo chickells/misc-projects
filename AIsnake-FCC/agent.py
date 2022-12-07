@@ -4,6 +4,9 @@ import numpy as np
 from collections import deque
 from game import SnakeGameAI, Direction, Point
 
+# https://youtu.be/L8ypSXwyBds?t=3961
+# at 1:06:00
+
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
 LR = 0.001
