@@ -57,6 +57,7 @@ class SnakeGameAI:
         self.score = 0
         self.food = None
         self._place_food()
+        self.frame_iteration = 0
         
     def _place_food(self):
         x = random.randint(0, (self.w-BLOCK_SIZE )//BLOCK_SIZE )*BLOCK_SIZE 
@@ -65,21 +66,13 @@ class SnakeGameAI:
         if self.food in self.snake:
             self._place_food()
         
-    def play_step(self):
+    def play_step(self, action):
         # 1. collect user input
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    self.direction = Direction.LEFT
-                elif event.key == pygame.K_RIGHT:
-                    self.direction = Direction.RIGHT
-                elif event.key == pygame.K_UP:
-                    self.direction = Direction.UP
-                elif event.key == pygame.K_DOWN:
-                    self.direction = Direction.DOWN
+            
         
         # 2. move
         self._move(self.direction) # update the head
