@@ -133,9 +133,10 @@ def train():
             agent.n_games += 1
             agent.train_long_memory()
 
-            if score > (record * 0.7):
+            if score > record:
                 record = score
-                agent.model.save()
+                if score > (record * 0.7):
+                    agent.model.save()
 
             print('Game: ', agent.n_games, 'Score: ', score, 'Record: ', record)
 
