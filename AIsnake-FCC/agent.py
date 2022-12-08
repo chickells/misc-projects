@@ -133,7 +133,7 @@ def train():
             agent.n_games += 1
             agent.train_long_memory()
 
-            if score > record:
+            if score > (record * 0.7):
                 record = score
                 agent.model.save()
 
